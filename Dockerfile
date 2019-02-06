@@ -79,7 +79,7 @@ RUN cat /etc/ssh/ssh_config | grep -v StrictHostKeyChecking > /etc/ssh/ssh_confi
 
 # Personal configuration
 RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
-    chsh -s ${which zsh}
+    chsh -s ${which zsh} \
     zsh
     
 # Download examples
