@@ -78,9 +78,10 @@ RUN cat /etc/ssh/ssh_config | grep -v StrictHostKeyChecking > /etc/ssh/ssh_confi
     mv /etc/ssh/ssh_config.new /etc/ssh/ssh_config
 
 # Personal configuration
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
-    chsh -s ${which zsh} \
-    zsh
+
+RUN ["apt-get", "update"]
+RUN ["apt-get", "install", "-y", "zsh"]
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
     
 # Download examples
 RUN mkdir /Workspace
